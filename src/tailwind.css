@@ -1,0 +1,145 @@
+@import '@fontsource/fira-mono';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--font-body: 'Space Grotesk', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-mono: 'Fira Mono', monospace;
+	font-family: var(--font-body);
+}
+
+html {
+	@apply bg-base-100;
+}
+
+html.dark {
+	@apply bg-base-100;
+}
+
+.wallet-adapter-button-trigger {
+    @apply bg-secondary hover:bg-secondary-focus text-secondary-content !important;
+}
+
+html.dark .wallet-adapter-button-trigger {
+    @apply bg-accent hover:bg-accent-focus text-accent-content !important;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	@apply bg-base-100;
+	--scrollbar-primary-color: var(--p);
+	--text-color: var(--er);
+	overflow: scroll;
+	body::-webkit-scrollbar {
+		width: 0.5rem;
+	}
+	body::-webkit-scrollbar-thumb {
+		background: linear-gradient(to right, var(--p), var(--s), var(--a));
+		border-radius: 4px;
+	}
+}
+
+pre {
+	font-size: 16px;
+	font-family: var(--font-mono);
+	background-color: rgba(255, 255, 255, 0.45);
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+	padding: 0.5em;
+	overflow-x: auto;
+}
+
+@layer components {
+	body {
+		--brand-accent: #facc15;
+		overflow-wrap: break-word;
+		overflow-y: auto;
+		scrollbar-gutter: stable;
+	}
+
+	:root {
+		accent-color: var(--brand-accent);
+	}
+
+	:focus-visible {
+		outline-color: var(--brand-accent);
+	}
+
+	::selection {
+		background-color: var(--p);
+		color: var(--pc);
+	}
+
+	.dark ::selection {
+		color: var(--bc);
+	}
+
+	::marker {
+		color: var(--brand-accent);
+	}
+
+	:is(
+			::-webkit-calendar-picker-indicator,
+			::-webkit-clear-button,
+			::-webkit-inner-spin-button,
+			::-webkit-outer-spin-button
+		) {
+		color: var(--brand-accent);
+	}
+
+	details {
+		border: 2px solid var(--brand-accent);
+		padding: 0.5rem 1rem;
+	}
+
+	details > summary {
+		cursor: pointer;
+	}
+
+	details > summary > *:first-child {
+		display: inline;
+	}
+
+	img {
+		max-width: 100%;
+		object-fit: cover;
+		background-color: grey;
+	}
+}
+
+a {
+	@apply text-accent hover:text-primary-focus hover:underline;
+}
+
+article.prose a {
+	word-break: break-word;
+}
+
+article.prose h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+	text-decoration: none !important;
+	@apply text-primary dark:text-accent;
+}
+
+.capsize::before {
+	content: '';
+	margin-bottom: -0.098em;
+	display: table;
+}
+
+.capsize::after {
+	content: '';
+	margin-top: -0.219em;
+	display: table;
+}
+
+.wallet-adapter-button-start-icon img {
+	background-color: transparent !important;
+}
